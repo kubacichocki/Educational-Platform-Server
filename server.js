@@ -1,6 +1,7 @@
 const express = require('express'); //Line 1
 const mongoose = require('mongoose')
 const auth = require('./routes/auth')
+const homework = require('./routes/homework')
 const request = require('request')
 const bodyParser = require('body-parser')
 var cors = require('cors')
@@ -37,6 +38,7 @@ app.get('/test/:id', (req,res) =>{
 })
 
 app.use('/auth', auth)
+app.use('/homework', homework)
 
 
 

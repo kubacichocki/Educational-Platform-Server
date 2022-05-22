@@ -1,6 +1,6 @@
 // auth controller
 const User = require("../models/User");
-const { registerValidation } = require("../controllers/validation");
+const { registerValidation } = require("./registerValidation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 //const websiteRoute = require("../routes/website");
