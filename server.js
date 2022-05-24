@@ -33,6 +33,8 @@ try {
 }
 
 
+
+
 app.get('/test/:id', (req,res) =>{
     console.log(req.params.id)
 })

@@ -1,7 +1,7 @@
 // create User model
 const mongoose = require('mongoose')
 
-const homeworkSchema = new mongoose.Schema({
+const homeworkSubmitted = new mongoose.Schema({
     assignment: {
         type: String,
         required: true,
@@ -10,12 +10,6 @@ const homeworkSchema = new mongoose.Schema({
     },
     student: {
         type: String,
-        min: 6,
-        max: 255
-    },
-    teacher: {
-        type: String,
-        required: true,
         min: 6,
         max: 255
     },
@@ -35,4 +29,4 @@ const homeworkSchema = new mongoose.Schema({
     } */
 })
 
-module.exports = mongoose.model('Homework',homeworkSchema)
+module.exports = mongoose.model('HomeworkSubmitted',homeworkSubmitted)
