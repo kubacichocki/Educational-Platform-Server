@@ -1,6 +1,7 @@
-// create User model
+//import libraries
 const mongoose = require('mongoose')
 
+// create User model
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -24,4 +25,5 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+//export module
 module.exports = mongoose.model('User',userSchema)

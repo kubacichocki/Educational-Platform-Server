@@ -1,18 +1,19 @@
 //auth route module
-//const { register, login } = require('../controllers/auth')
+
+//import controllers
 const {addHomework, submitHomework, getHomework, getSubmitted, markHomework} = require('../controllers/homework')
 
 //import only router
 const router = require('express').Router()
-console.log("DZIALAM")
 
 router.post('/add', addHomework)
 router.post('/submit', submitHomework)
 router.post('/mark', markHomework)
 router.get('/get', getHomework)
 router.get('/submitted', getSubmitted)
-router.get('/ex', (req, res) => { //Line 9
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-  }); //Lin
+router.get('/test', (req, res) => { 
+    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); 
+  }); 
 
+  //export module
 module.exports = router;

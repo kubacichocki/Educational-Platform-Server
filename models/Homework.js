@@ -28,11 +28,7 @@ const homeworkSchema = new mongoose.Schema({
     grade: {
         type: String,
     }
-   /* img:
-    {
-        data: Buffer,
-        contentType: String,
-    } */
 })
 
+//export module
 module.exports = mongoose.model('Homework',homeworkSchema)

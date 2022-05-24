@@ -1,4 +1,5 @@
-const express = require('express'); //Line 1
+//import libraries and components
+const express = require('express'); 
 const mongoose = require('mongoose')
 const auth = require('./routes/auth')
 const homework = require('./routes/homework')
@@ -6,15 +7,8 @@ const request = require('request')
 const bodyParser = require('body-parser')
 var cors = require('cors')
 require("dotenv").config();
-
-
-const app = express(); //Line 2
-
-
-// create a GET route
-app.get('/express_backend', (req, res) => { //Line 9
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-}); //Lin
+//initialize express
+const app = express(); 
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extends: true}))
@@ -33,20 +27,13 @@ try {
 }
 
 
-
-
-app.get('/test/:id', (req,res) =>{
-    console.log(req.params.id)
-})
-
 app.use('/auth', auth)
 app.use('/homework', homework)
 
-
-
-const port = process.env.PORT || 5000; //Line 3
+//set up port
+const port = process.env.PORT || 5000; 
 
 // This displays message that the server running and listening to specified port
-app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 

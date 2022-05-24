@@ -1,4 +1,4 @@
-// validation controller
+//import components and libraries
 const Joi = require('joi')
 const Homework = require("../models/Homework");
 const HomeworkSubmitted = require("../models/HomeworkSubmitted")
@@ -7,26 +7,8 @@ const jwt = require("jsonwebtoken");
 const sanitize = require('mongo-sanitize');
 console.log("test")
 
-/*
-var multer = require('multer'); 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-  
-var upload = multer({ storage: storage });
-*/
-
+//add homework function
 exports.addHomework = async (req, res) => {
-    // Validate the data
-    //const { error } = homeworkValidation(req.body);
-    //if (error) return res.status(400).send(error.details[0].message);
-    console.log(req.body.deadline)
-    console.log(req.body.teacher)
     // Add new homework
     const homework = new Homework({
       assignment: sanitize(req.body.assignment),
@@ -44,7 +26,7 @@ exports.addHomework = async (req, res) => {
     }
   };
 
-
+//homework submit function
   exports.submitHomework = async (req, res) => {
     console.log(req.body.student)
     const homeworkSubmitted = new HomeworkSubmitted({
@@ -53,7 +35,6 @@ exports.addHomework = async (req, res) => {
       deadline: sanitize(req.body.deadline), 
       submit: sanitize(req.body.submit) 
     });
-
     homeworkSubmitted.deadline instanceof Date;
     console.log(homeworkSubmitted)
     // Add a user to the database
@@ -65,27 +46,7 @@ exports.addHomework = async (req, res) => {
     }
   };
 
-  // exports.markHomework = async (req, res) => {
-
-  //   //console.log("Grade"+req.body.grade)
-
-  //   const homeworkMarked = new HomeworkSubmitted({
-  //     assignment: sanitize(req.body.assignment),
-  //   });
-  //   try {
-  //     //console.log("Wchodze grade :" + req.body.grade)
-  //     await HomeworkSubmitted.updateOne({ assignment: req.body.assignment }, {
-  //       grade: req.body.grade
-  //     });
-  //     const doc = await HomeworkSubmitted.findOne({assignment: req.body.assignment});
-  //     console.log("zupdateowany grade: "+doc)
-  //     res.status(201).send("Adding success!");
-  //   } catch (error) {
-  //     res.status(400).send(error.details);
-  //   }
-  // };
-
-
+  // get homework from database
   exports.getHomework = async (req, res) =>{
     Homework.find({}, function(err, users) {
       var userMap = {};
@@ -96,6 +57,7 @@ exports.addHomework = async (req, res) => {
     });
   }
 
+  //get submitted assessments
   exports.getSubmitted = async (req, res) =>{
     HomeworkSubmitted.find({}, function(err, users) {
       var userMap = {};

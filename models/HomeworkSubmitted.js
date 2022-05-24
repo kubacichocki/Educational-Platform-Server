@@ -1,6 +1,7 @@
-// create User model
+//import libraries
 const mongoose = require('mongoose')
 
+// create User model
 const homeworkSubmitted = new mongoose.Schema({
     assignment: {
         type: String,
@@ -22,11 +23,7 @@ const homeworkSubmitted = new mongoose.Schema({
     grade: {
         type: String,
     }
-   /* img:
-    {
-        data: Buffer,
-        contentType: String,
-    } */
 })
 
+//export module
 module.exports = mongoose.model('HomeworkSubmitted',homeworkSubmitted)

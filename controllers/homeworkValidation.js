@@ -1,7 +1,7 @@
-// validation controller
+//import libraries
 const Joi = require('joi')
 
-//naming
+// validate homework input
 const homeworkValidation = (data) =>{
     const schema = Joi.object({
         assignment: Joi.string().min(6).required(),
@@ -9,4 +9,6 @@ const homeworkValidation = (data) =>{
         deadline: Joi.string().min(6).required(),
     })
 }
+
+//export module
 module.exports.homeworkValidation = homeworkValidation

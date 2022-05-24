@@ -1,7 +1,7 @@
-// validation controller
+//import libraries
 const Joi = require('joi')
 
-//naming
+//validate register input
 const registerValidation = (data) =>{
     const schema = Joi.object({
         name: Joi.string().min(6).required(),
@@ -10,5 +10,5 @@ const registerValidation = (data) =>{
     return schema.validate(data)
 }
 
-
+//export module
 module.exports.registerValidation = registerValidation

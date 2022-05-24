@@ -1,9 +1,8 @@
-// auth controller
+//import libraries components
 const User = require("../models/User");
 const { registerValidation } = require("./registerValidation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-//const websiteRoute = require("../routes/website");
 const sanitize = require("mongo-sanitize");
 
 exports.register = async (req, res) => {
@@ -29,7 +28,6 @@ exports.register = async (req, res) => {
   try {
     const savedUser = await user.save();
     res.status(201).send("Register success!");
-    // res.send({user: user._id})
   } catch (error) {
     res.status(400).send(error);
   }
@@ -48,7 +46,7 @@ exports.login = async (req, res) => {
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Invalid password");
 
-  // Create and assign a token
+  //Create and assign a token
   //const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
   res.status(200).send("1");
   // res.render('game.ejs', {testObject: req.body.name})
